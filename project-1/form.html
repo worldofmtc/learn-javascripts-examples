@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Basit Form Kontrol</title>
+<style>
+  input { border: 1px solid #ccc; margin: 5px; padding: 5px; }
+</style>
+</head>
+<body>
+
+<h3>Form</h3>
+<input id="ad" placeholder="Ad">
+<input id="email" placeholder="E-posta">
+<input id="tel" placeholder="Telefon">
+<button onclick="kontrolEt()">Kontrol Et</button>
+
+<script>
+alert("Lütfen bilgileri eksiksiz doldurun!");
+//Bu kısım sayfa yükelendiğinde uyarı veriyor. kullanıcının önce forma bi işlem yapması lazım . Ama sayfa yüklendiğinde uyarı veriyor.
+
+//Fonksiyon güzel olmuş mantıken doğru ama kullanıcı formu boş bıraktığında 3 uyarı birden geliyor .
+//kullanıcı deneyimi olarak bunları tek if de birleştirirsen tek hata mesajı döner kullanıcı bir alerti kapatmak zorunda kalır.
+//örnek bir if i yazayım incelemek için.
+//genel olarak güzel mantıken doğru elementlerde value ve css kullanmayı anlamış oldun .
+
+
+//////////////////////////////////örnek if//////////////////////////////////////
+// if (ad.value === "" || email.value === "" || tel.value === "") {
+
+
+function formControl() {
+ 
+   let ad = document.getElementById("ad");
+   let email = document.getElementById("email");
+   let tel = document.getElementById("tel");
+
+   if (ad.value === "" || email.value === "" || tel.value === "") { // Tek if ile kontrol
+     if (ad.value === "") {
+       ad.style.border = "2px solid red";
+     } else {
+       ad.style.border = "1px solid #ccc";
+     }
+
+     if (email.value === "") {
+       email.style.border = "2px solid red";
+     } else {
+       email.style.border = "1px solid #ccc";
+     }
+
+     if (tel.value === "") {
+       tel.style.border = "2px solid red";
+     } else {
+       tel.style.border = "1px solid #ccc";
+     }
+
+     alert("Lütfen tüm alanları doldurun!");
+   } else {
+     ad.style.border = "1px solid #ccc";
+     email.style.border = "1px solid #ccc";
+     tel.style.border = "1px solid #ccc";
+   }
+  
+}
+
+/////////////////////////2. bir fonksiyon örneği form içindeki tüm inputları getElementsByTagName ile alıp döngü ile kontrol edebiliriz.//////////////////////
+
+function formControl2(formID) { // bu biraz daha ileri seviye bir fonksiyon
+
+  let form = document.getElementById(formID);
+  let inputs = form.getElementsByTagName("input"); //tek elementByTagName ile tüm inputları aldık burdan tüm inputlr bir array gibi davranır. örn inputs[0] inputs[1] vs.
+  let has_any_empty = true; // diyelim ki bir değişken olsun ve inputlar dolu ya da boşsa true false atalım ona göre de işlem yapacağımı düşüneceğim.
+
+  for (let i = 0; i < inputs.length; i++) { //sıradaki konu array ve döngüler olucak
+    if (inputs[i].value === "") {
+      inputs[i].style.border = "2px solid red";
+      has_any_empty = false; // herhangi bir input boşsa false yapıyoruz.
+    } else {
+      inputs[i].style.border = "1px solid #ccc";
+    }
+  }
+
+  if (!has_any_empty) { // eğer herhangi bir input boşsa uyarı veriyoruz. doluysa zaten devam eder
+    alert("Lütfen tüm alanları doldurun!");
+  }else {
+    // Tüm alanlar doluysa yapılacak işlemler
+    form.submit(); // formu gönder submit() fonksiyonu ile form submit edilebilir.
+  }
+  
+}
+
+function kontrolEt() {
+  let ad = document.getElementById("ad");
+  let email = document.getElementById("email");
+  let tel = document.getElementById("tel");
+
+  if (ad.value === "") {
+    ad.style.border = "2px solid red";
+    alert("Ad alanı boş bırakılamaz!");
+  } else {
+    ad.style.border = "1px solid #ccc";
+  }
+
+  if (email.value === "") {
+    email.style.border = "2px solid red";
+    alert("E-posta alanı boş bırakılamaz!");
+  } else {
+    email.style.border = "1px solid #ccc";
+  }
+
+  if (tel.value === "") {
+    tel.style.border = "2px solid red";
+    alert("Telefon alanı boş bırakılamaz!");
+  } else {
+    tel.style.border = "1px solid #ccc";
+  }
+}
+
+</script>
+
+</body>
+</html>

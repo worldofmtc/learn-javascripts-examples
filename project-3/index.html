@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //////////DİZİLER//////////
+
+        //Birden fazla veriyi tek bir değişkende tutmamızı sağlar.
+
+        //Dizi tanımlama
+        let isimler = ["Ahmet", "Mehmet", "İsmet", "Saffet"];
+        console.log(isimler); // console'da diziyi gösterir.
+        console.log(isimler[0]); // Dizinin ilk elemanını gösterir.
+        console.log(isimler[3]); // Dizinin dördüncü elemanını gösterir. 
+        console.log(isimler.length); // Dizinin uzunluğunu gösterir.
+        console.log(typeof(isimler)); // Dizinin türünü gösterir. (object)
+        //Diziye ekleme
+        isimler[4] = "Canan"; // Dizinin beşinci elemanına "Canan" ekler.
+        console.log(isimler);// Canan eklenmiş haliyle diziyi gösterir.
+        //Dizi elemanını değiştirme
+        isimler[2] = "Ceren"; // Dizinin üçüncü elemanını "Ceren" ile değiştirir.
+        console.log(isimler); // Ceren ile değiştirilmiş haliyle diziyi gösterir
+        //Dizi elemanını silme
+        isimler[1] = undefined; // Dizinin ikinci elemanını siler (undefined yapar).
+        console.log(isimler); // İkinci elemanı undefined yapılmış haliyle diziyi gösterir.         
+        //Array Metotları
+        //push() : Dizinin sonuna eleman ekler.     
+        isimler.push("Ayşe");
+        //pop() : Dizinin sonundaki elemanı siler.
+        isimler.pop();
+        //unshift() : Dizinin başına eleman ekler.
+        isimler.unshift("Zeynep");
+        //shift() : Dizinin başındaki elemanı siler.
+        isimler.shift();
+        
+
+        ///////////////////LOOP///////////////////
+        //Dizilerde ve nesnelerde tekrar eden işlemleri kolaylaştırır.
+        for (let i = 0; i < 5; i++) { //i 0'dan başlayarak 5'e kadar döner
+            console.log(i); //i'nin o anki değerini gösterir
+        }
+        
+        let renkler = ["Kırmızı", "Mavi", "Yeşil"]; //Burda bir dizi var 
+        for (let i = 0; i < renkler.length; i++) { //Dizinin uzunluğu kadar döner
+            console.log(renkler[i]); //Dizinin her bir elemanını sırayla gösterir.
+        }
+
+        for (let i in renkler) { //Dizinin index numaralarını döner
+            console.log(i); //Dizinin index numaralarını gösterir.
+        }
+
+        //each() metodu
+        renkler.forEach(function(renk, index) { //Dizinin her bir elemanı için çalışır
+            console.log(index + ": " + renk); //Dizinin index numarası ve elemanını gösterir.
+        });
+          
+
+        /////////////////////ÖDEV/////////////////////
+
+        //1- Bir dizi oluşturun ve içine 5 tane farklı meyve ismi ekleyin. Daha sonra bu diziyi for döngüsü ile ekrana yazdırın.
+        //2- Bir döngü kullanarak 1'den 10'a kadar olan sayıları ekrana yazdırın. bu sırada progressive olarak sayıları toplayın ve toplamı ekrana yazdırın. 
+
+    </script>
+</body>
+</html>

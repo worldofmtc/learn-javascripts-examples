@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Events</title>
+</head>
+
+<body>
+    <button id="click-btn">Tıkla Beni- Clik olayı </button>
+    <button onclick="TıklamaOrnek()">Tıkla Beni- Clik olayı (html içinde on ile)</button>
+
+    <div id="hover-element" style="width: 150px;height: 150px;border-style: solid;"> Bu kutunun rengi değişecek</div>
+
+    <br>
+    form örneği:
+    <form id="myForm">
+        <input type="text" name="name" placeholder="İsminizi girin">
+        <input type="submit" value="Gönder">    
+    </form>
+
+    input ile keydown örneği:
+    <input type="text"   id="text-place">
+
+    <div id="output">Burada yazı yazacak</div>
+
+    <script>
+        //////////////////JAVASCRIPT EVENTS-JAVASCRİPT OLAYLARI//////////////////
+
+        //Olaylar, kullanıcı etkileşimlerine veya belirli durumlara tepki vermek için kullanılır.
+
+        //Örnek 1: Sayfa yüklendiğinde bir mesaj gösterme
+        //ÖRNEK 2: Butona tıklandığında bir mesaj gösterme
+        //Örnek 3: Fare bir öğenin üzerine geldiğinde rengini değiştirme
+        //Örnek 4: Form gönderildiğinde verileri doğrulama
+
+        //Yani olaylar, kullanıcıların web sayfalarıyla etkileşimde bulunmasını sağlar ve dinamik içerik oluşturmak için kullanılır.
+
+
+        //Bu olayları HTML öğeleri ile birlikte kullanmak için genellikle "addEventListener" metodu kullanılır.
+        //Veya HTML öğelerinin "on" ile başlayan özelliklerini kullanabiliriz.
+
+        //Temel olarak olaylar şu biçimde kullanılır:
+        //element.addEventListener("olayTürü", function() {
+        //Veya element. olayTürü = function() {
+        //Veya onlayTürü="function()" - bir html öğesinde
+        //Olay türleri: click, load, mouseover, submit, keydown, keyup, change, focus, blur vb.
+
+        //örnek olay türleri kullanımı:
+        //Örnek 1: Sayfa yüklendiğinde demek için "load" olay türü kullanılır.
+        window.addEventListener("load", function () { // sayfa yüklendiğinde load olayı tetiklenir
+            console.log("Sayfa yüklendi!");
+        });
+        //Örnek 2: Butona tıklandığında demek için "click" olay türü kullanılır.
+        document.getElementById('click-btn').addEventListener("click", function () { // yukarıdaki butona tıklandığında click olayı tetiklenir
+            alert("Butona tıkladım tıklandı!");
+        });
+
+        //ve ya örnek 2 butondaki gibi fonsiyonu direk html içinde de kullanabiliriz. on ile -> onclik="function()"
+        function TıklamaOrnek() {
+            alert("Butona tıkladım tıklandı!");
+        }
+
+        //aslında tüm olay bu ya addeventlistener ile veya on ile başlatılan tag içine yazılan html özellikleri ile kullanılır.
+
+        //Örnek 3: Fare bir öğenin üzerine geldiğinde rengini değiştirme (mouseover ve mouseout olay türleri kullanılır)
+        document.getElementById("hover-element").addEventListener("mouseover", function () {
+            this.style.backgroundColor = "yellow"; // fare öğenin üzerine geldiğinde arka plan rengini sarı yapar
+        });
+        document.getElementById("hover-element").addEventListener("mouseout", function () {
+            this.style.backgroundColor = ""; // fare öğeden çıktığında arka plan rengini varsayılan yapar
+        });
+
+        //Örnek 4: Form gönderildiğinde verileri doğrulama (submit olay türü kullanılır)
+        //Bu örnek için bir form eklememiz gerekiyor, ancak burada sadece olay türünü gösteriyoruz.
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // formun varsayılan gönderimini engeller
+            // form verilerini doğrulama işlemleri burada yapılır
+            alert("Form gönderildi!");
+        });
+
+        // Örnek 5: input içeriğini anlık olarak div'e yazma (input olayı kullanılır)
+        document.getElementById("text-place").addEventListener("input", function (event) {
+            document.getElementById("output").innerText = this.value;
+        });
+         //veya function ile de yapabiliriz
+        function keydownFunction(event) {
+            console.log("Bir tuşa basıldı: " + event.key); // basılan tuşu gösterir
+        }
+
+
+
+
+
+        ///////////////////ÖDEVLER ///////////////////
+        //1- Bir buton oluşturun ve bu butona tıklandığında bir alert mesajı gösterin.
+        //2-Select (açılır menü) öğesi oluşturun ve bir seçenek seçildiğinde seçilen değeri bir div içinde gösterin.
+        //3Form öğesi oluşturun ve form gönderildiğinde form verilerinin doluluğunu kontrol edin. Eğer boş alan varsa bir uyarı mesajı gösterin.
+        //4-+ - sayacı oluşturun. + butonuna tıklandığında sayacı artırın, - butonuna tıklandığında sayacı azaltın ve sayacı bir div içinde gösterin.
+        // Butonla kutyu hareketlendirin. Sağa, sola, yukarı ve aşağı ok tuşlarına basıldığında kutu hareket etsin.
+        
+
+    </script>
+
+</body>
+
+</html>
